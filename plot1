@@ -1,0 +1,9 @@
+x<- read.table("H:/EDU/PPR/INST HDD/Online courses/courseera/Exploratory_Data_Analysis/Homework/Week1hm/household_power_consumption.txt", sep = ";", header = T, na.strings = "?")
+View(x)
+x$Datetime <- strptime(paste(x$Date, x$Time), "%d/%m/%Y %H:%M:%S")
+View(x)
+y<- which(x$Datetime==strptime("2007-02-01", "%Y-%m-%d"))
+z<- which(x$Datetime==strptime("2007-02-02 23:59:00", "%Y-%m-%d %H:%M:%S"))
+View(z)
+a<- x[y:z, ]
+hist(as.numeric(as.character(a$Global_active_power)), main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
